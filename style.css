@@ -1,0 +1,353 @@
+/* 
+
+
+
+body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    background-color: #f4f4f4;
+    font-family: Arial, sans-serif;
+    margin: 0;
+}
+
+.calculator {
+    background-color: #fff;
+    width: 100%;
+    max-width: 400px; 
+    min-width: 320px;
+    border-radius: 20px;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.5);
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    height: auto;
+}
+
+.input-container {
+    position: relative;
+    width: 100%;
+}
+
+#display {
+    width: 100%;
+    height: 90px;
+    font-size: 32px;
+    text-align: right;
+    margin-bottom: 20px;
+    padding: 10px -5px 10px 10px;
+    border: none;
+    border-radius: 10px;
+    box-shadow: inset 0 0 5px rgba(0, 0, 0, 0.1);
+    background-color: #f9f9f9;
+    z-index: 10; 
+}
+
+#clear-icon {
+    position: absolute;
+    top: 72%;
+    right: 1px;
+    transform: translateY(-55%); 
+    font-size: 204px;
+    color: #007bff;
+    cursor: pointer;
+    transition: color 0.3s;
+    z-index: 20;
+    color: rgb(226, 226, 226);
+}
+
+
+#clear-icon:hover {
+    color: #0056b3;
+}
+
+.buttons {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 10px;
+    width: 100%;
+}
+
+button {
+    padding: 25px;
+    font-size: 24px;
+    border: none;
+    border-radius: 10px;
+    background-color: #007bff;
+    color: white;
+    cursor: pointer;
+    transition: background-color 0.3s, transform 0.2s;
+}
+
+button:hover {
+    background-color: #0056b3;
+}
+
+button:active {
+    background-color: #004085;
+    transform: translateY(-2px);
+}
+
+button.operator {
+    background-color: #ff6347;
+}
+
+button.operator:hover {
+    background-color: #ff4500;
+}
+
+button.zero {
+    grid-column: span 2;
+    text-align: center;
+}
+
+button:focus {
+    outline: none;
+    box-shadow: 0 0 5px rgba(0, 123, 255, 0.7);
+}
+
+@media (max-width: 480px) {
+    #display {
+        height: 50px;
+        font-size: 28px;
+    }
+
+    button {
+        padding: 15px;
+        font-size: 20px;
+    }
+
+    .buttons {
+        gap: 8px;
+    }
+
+    #clear-icon {
+        font-size: 20px; 
+        right: 5px;
+    }
+}
+
+@media (max-width: 768px) {
+    #display {
+        height: 55px;
+        font-size: 30px;
+    }
+
+    button {
+        padding: 20px;
+        font-size: 22px;
+    }
+
+    .buttons {
+        gap: 12px;
+    }
+
+    #clear-icon {
+        font-size: 22px; 
+        right: 8px;
+    }
+}
+
+@media (min-width: 769px) {
+    #display {
+        font-size: 32px;
+    }
+
+    button {
+        padding: 25px;
+        font-size: 24px;
+    }
+
+    .buttons {
+        gap: 15px;
+    }
+
+    #clear-icon {
+        font-size: 24px;
+    }
+} */
+
+
+/* Global styles for the body and calculator */
+body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    background-color: #f4f4f4;
+    font-family: Arial, sans-serif;
+    margin: 0;
+}
+
+.calculator {
+    background-color: #fff;
+    width: 100%;
+    max-width: 400px; /* Max width for larger screens */
+    min-width: 320px; /* Min width for smaller screens */
+    border-radius: 20px;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.5);
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    height: auto;
+}
+
+.input-container {
+    position: relative;
+    width: 100%;
+}
+
+#display {
+    width: 100%;
+    height: 90px;
+    font-size: 32px;
+    text-align: right;
+    margin-bottom: 20px;
+    padding: 10px -5px 10px 10px;
+    border: none;
+    border-radius: 10px;
+    box-shadow: inset 0 0 5px rgba(0, 0, 0, 0.1);
+    background-color: #f9f9f9;
+    z-index: 10; /* Ensure the input is above the icon */
+    white-space: nowrap; /* Matnni bir qatorda saqlash */
+    overflow: hidden; /* Matn chiqmasligi uchun to'sish */
+    text-overflow: ellipsis; /* Agar matn juda uzun bo'lsa, ... qo'yish */
+}
+
+/* Ikonka uchun uslublar */
+#clear-icon {
+    position: absolute;
+    top: 60%; /* Ikonkani vertikal markazlash */
+    right: 10px; /* Ikonkani o'ng tomonga joylash */
+    transform: translateY(-50%); /* Vertikal markazlash */
+    font-size: 28px; /* Ikonkani kattaligini kamaytirish */
+    color: rgb(226, 226, 226);
+    cursor: pointer;
+    transition: color 0.3s;
+    z-index: 20; /* Ikonkani input maydonidan yuqori qilish */
+    /* padding: -100px 0; */
+}
+
+#clear-icon:hover {
+    color: #0056b3; /* Ikonkani hover holatida o'zgartirish */
+}
+
+/* Buttons container */
+.buttons {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 10px;
+    width: 100%;
+}
+
+button {
+    padding: 25px;
+    font-size: 24px;
+    border: none;
+    border-radius: 10px;
+    background-color: #007bff;
+    color: white;
+    cursor: pointer;
+    transition: background-color 0.3s, transform 0.2s;
+}
+
+button:hover {
+    background-color: #0056b3;
+}
+
+button:active {
+    background-color: #004085;
+    transform: translateY(-2px);
+}
+
+button.operator {
+    background-color: #ff6347;
+}
+
+button.operator:hover {
+    background-color: #ff4500;
+}
+
+button.zero {
+    grid-column: span 2;
+    text-align: center;
+}
+
+button:focus {
+    outline: none;
+    box-shadow: 0 0 5px rgba(0, 123, 255, 0.7);
+}
+
+/* Mobile phones (small devices) */
+@media (max-width: 480px) {
+    #display {
+        height: 50px;
+        font-size: 28px;
+    }
+
+    button {
+        padding: 15px;
+        font-size: 20px;
+    }
+
+    .buttons {
+        gap: 8px;
+    }
+
+    #clear-icon {
+        font-size: 20px; /* Ikonkani mobil uchun kichraytirish */
+        right: 8px; /* O'ngga surish */
+        top: 90%; /* Pastga ko'chirish */
+        transform: translateY(-50%); /* Vertikal markazlash */
+    }
+}
+
+/* Tablets and larger phones */
+@media (max-width: 768px) {
+    #display {
+        height: 55px;
+        font-size: 30px;
+    }
+
+    button {
+        padding: 20px;
+        font-size: 22px;
+    }
+
+    .buttons {
+        gap: 12px;
+    }
+
+    #clear-icon {
+        font-size: 25px; /* Ikonkani kichraytirish */
+        right: 10px;
+        top: 85%; /* Pastga ko'chirish */
+        transform: translateY(-50%);
+    }
+}
+
+/* Larger screens (e.g., desktops) */
+@media (min-width: 769px) {
+    #display {
+        font-size: 32px;
+    }
+
+    button {
+        padding: 25px;
+        font-size: 24px;
+    }
+
+    .buttons {
+        gap: 15px;
+    }
+
+    #clear-icon {
+        font-size: 25px; /* Kompyuterlarda kichikroq o'lcham */
+        right: -10px; /* Eng yuqori o'ng burchak */
+        top: 60%; /* O'ng pastga joylash */
+        transform: translateY(-50%);
+    }
+}
